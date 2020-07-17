@@ -1,4 +1,5 @@
 import time
+from binary_search_tree import BSTNode 
 
 start_time = time.time()
 
@@ -18,7 +19,15 @@ duplicates = []  # Return the list of duplicates in this data structure
 #         if name_1 == name_2:
 #             duplicates.append(name_1)
 
-duplicates = set(names_1).intersection(names_2)
+nodes = BSTNode('names')
+
+for names in names_1:
+    nodes.insert(names)
+
+for name in names_2:
+    if nodes.contains(name):
+        duplicates.append(name)
+
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
